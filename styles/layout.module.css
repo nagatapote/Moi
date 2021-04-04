@@ -123,11 +123,31 @@
     background-color: #eeeeee;
   }
 
+  .main {
+    border-radius: 10px;
+    background-color: white;
+    width: 97%;
+    position: relative;
+    min-height: 80vh;
+    margin: 20px 0px 20px 5px;
+    padding-bottom: 20px;
+  }
+
   .rightArea {
     border-radius: 10px;
     background-color: white;
-    width: 75%;
+    width: 97%;
     margin: 20px auto;
     padding: 20px 20px 20px 20px;
+  }
+
+  .archiveSelect {
+    margin-top: 10px;
+    width: 75%;
+  }
+
+  .categorySelect {
+    margin-top: 10px;
+    width: 75%;
   }
 }
