@@ -1,0 +1,78 @@
+/* [id].tsx css */
+
+.article {
+  max-width: 75%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.blogListItem {
+  display: inline-block;
+  vertical-align: top;
+  width: 250px;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.5);
+}
+
+.blogListItem:hover {
+  box-shadow: 0 15px 10px 5px rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.blogListImage {
+  object-fit: cover;
+  width: 250px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.blogTitle {
+  text-align: left;
+  color: black;
+  font-size: 0.9rem;
+  overflow-wrap: break-word;
+  padding: 10px;
+  min-height: 70px;
+}
+
+.articleArea {
+  text-align: left;
+  margin: 50px;
+}
+
+.blogList {
+  padding: 10px;
+}
+
+.blogUser {
+  display: flex;
+}
+
+.blogUser span {
+  padding-top: 12px;
+  font-size: 0.8rem;
+}
+
+.blogDate {
+  color: #c0c0c0;
+  font-size: 0.7rem;
+  display: flex;
+}
+
+.blogProfileImage {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 8px;
+}
+
+.blogClockImage {
+  width: 16px;
+  height: 16px;
+}
+
+/* posts.[id].tsx css */

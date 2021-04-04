@@ -1,0 +1,70 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.textCenter {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* markdown */
+.markdown code,
+.markdown pre {
+  max-height: 500px;
+  border-radius: 10px;
+  border: 10px solid #f8f8f8;
+  overflow: scroll;
+  background-color: #f8f8f8;
+}
+
+.markdown img {
+  border: 2px solid black;
+  max-width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.markdown h1 {
+  padding: 1rem 2rem;
+  border-left: 4px solid #000;
+  margin-bottom: 5px;
+  background: #f4f4f4;
+}
+.markdown h2 {
+  border-bottom: 2px solid #000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.markdown h3 {
+  display: inline-block;
+  border-bottom: 6px double #000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.markdown h4 {
+  display: inline-block;
+  border-bottom: 2px solid #000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

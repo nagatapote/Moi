@@ -1,0 +1,123 @@
+.header {
+  height: 70px;
+  width: 100%;
+  padding: 0 50px;
+  background-color: #222222;
+  position: relative;
+  display: flex;
+}
+
+.header a {
+  color: white;
+}
+
+.header_logo {
+  color: white;
+  line-height: 70px;
+  font-size: 2rem;
+  width: 100%;
+}
+
+.header_menu {
+  color: white;
+  line-height: 70px;
+}
+
+.header_menu a {
+  margin: 0 0 0 24px;
+}
+
+.mainAll {
+  display: flex;
+  background-color: #eeeeee;
+}
+
+.rightArea {
+  border-radius: 10px;
+  background-color: white;
+  width: 25%;
+  margin: 20px 20px 20px 0px;
+  padding: 20px 20px 20px 20px;
+}
+
+.rightArea_profile {
+  margin-top: 10px;
+  border-bottom: 1px solid #c0c0c0;
+  width: 50%;
+}
+
+.profileImage {
+  margin: 20px auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profileName {
+  text-align: center;
+  font-weight: 800;
+}
+
+.rightArea span {
+  font-size: small;
+}
+
+.rightArea_archive {
+  margin-top: 20px;
+  border-bottom: 1px solid #c0c0c0;
+  width: 50%;
+}
+
+.archiveSelect {
+  margin-top: 10px;
+  width: 50%;
+}
+
+.rightArea_category {
+  margin-top: 20px;
+  border-bottom: 1px solid #c0c0c0;
+  width: 50%;
+}
+.categorySelect {
+  margin-top: 10px;
+  width: 50%;
+}
+
+.main {
+  border-radius: 10px;
+  background-color: white;
+  width: 75%;
+  position: relative;
+  min-height: 80vh;
+  margin: 20px 20px 20px 55px;
+  padding-bottom: 20px;
+}
+
+.home {
+  text-align: center;
+  margin: 30px;
+}
+.home a {
+  border-radius: 8px;
+  color: #555555;
+  padding: 10px 50px;
+  background-color: #eeeeee;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+}
+
+.footer {
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  background-color: #222222;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .rightArea {
+    display: none;
+  }
+}

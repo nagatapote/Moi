@@ -1,0 +1,19 @@
+.imageArea {
+  position: relative;
+  background-color: #000000;
+}
+
+.image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+}
+
+.imageArea span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
