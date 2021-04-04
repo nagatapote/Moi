@@ -75,4 +75,24 @@
   height: 16px;
 }
 
+@media screen and (max-width: 767px) {
+  .blogListItem {
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .blogListImage {
+    object-fit: cover;
+    width: 295px;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+}
+
 /* posts.[id].tsx css */
