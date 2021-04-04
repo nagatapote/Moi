@@ -70,7 +70,7 @@
 
 .archiveSelect {
   margin-top: 10px;
-  width: 50%;
+  width: 75%;
 }
 
 .rightArea_category {
@@ -80,7 +80,7 @@
 }
 .categorySelect {
   margin-top: 10px;
-  width: 50%;
+  width: 75%;
 }
 
 .main {
@@ -144,10 +144,14 @@
   .archiveSelect {
     margin-top: 10px;
     width: 75%;
+    font-size: 16px;
+    transform: scale(0.9);
   }
 
   .categorySelect {
     margin-top: 10px;
     width: 75%;
+    font-size: 16px;
+    transform: scale(0.9);
   }
 }
