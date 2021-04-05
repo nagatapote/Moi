@@ -1,1 +1,9 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+# Blog
+
+## url
+
+https://nagatapote.work
+
+## skils
+
+Nextjs(HTML CSS TypeScript) vercel

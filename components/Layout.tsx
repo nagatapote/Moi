@@ -18,7 +18,7 @@ const optionsName = {
   imageUrl: "/image/image.png",
   profileImage: "/image/profile.jpg",
   profileText:
-    "<center>ITエンジニア・ミニマリスト</center><br />食品業界からIT業界へ転職。<br />本業ではITエンジニアとしてシステム運用をしながら、プライベートではモダンな技術でフロントエンドの開発をしています。",
+    "<center>ITエンジニア・ミニマリスト</center><br />食品業界からIT業界へ転職。<br />本業ではITエンジニアとしてシステム運用をしています。<br />プライベートではモダンな技術でフロントエンドの開発をしています。",
 };
 
 type OptionsName = {
