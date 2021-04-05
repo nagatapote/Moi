@@ -16,7 +16,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     index.map((x, index) => {
       paths.push({
         params: {
-          id: post.date.slice(0, -3) + "_" + index,
+          id: post.date.slice(0, -3) + "_" + x,
         },
       });
     });
