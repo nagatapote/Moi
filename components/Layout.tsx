@@ -145,12 +145,14 @@ export default function Layout({
               handleChange(e, `/category/${categoryRef.current.value}_1`)
             }
           />
-          <AdSense.Google
-            client="ca-pub-3401994941764286"
-            slot="7553735009"
-            format="auto"
-            responsive="true"
-          />
+          <div className={layoutStyles.ads}>
+            <AdSense.Google
+              client="ca-pub-3401994941764286"
+              slot="7553735009"
+              format="auto"
+              responsive="true"
+            />
+          </div>
         </div>
       </div>
       {current && max ? (
