@@ -5,6 +5,7 @@ import Router from "next/router";
 import layoutStyles from "../styles/layout.module.css";
 import ImageArea from "./ImageArea";
 import Pager from "../components/pager";
+import AdSense from "react-adsense";
 
 const optionsName = {
   blogTitle: "Moi",
@@ -144,6 +145,7 @@ export default function Layout({
               handleChange(e, `/category/${categoryRef.current.value}_1`)
             }
           />
+          <AdSense.Google client="ca-pub-3401994941764286" slot="7553735009" />
         </div>
       </div>
       {current && max ? (
