@@ -149,6 +149,7 @@ export default function Layout({
             <AdSense.Google
               client="ca-pub-3401994941764286"
               slot="7553735009"
+              style={{ display: "block" }}
               format="auto"
               responsive="true"
             />
