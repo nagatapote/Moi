@@ -9,10 +9,14 @@ import AdSense from "react-adsense";
 
 const optionsName = {
   blogTitle: "Moi",
+  headerBackgroundColor: "",
+  headerLogoColor: "",
   menu1: "Twitter",
   menuLink1: "https://twitter.com/pote_nagata",
+  menuColor1: "",
   menu2: "GitHub",
   menuLink2: "https://github.com/nagatapote",
+  menuColor2: "",
   footerBlogName: "© 2021 Moi",
   imageText:
     "自分の好きなことをアウトプットするブログです。<br /><center>〜プログラミング・ミニマリスト〜</center>",
@@ -24,10 +28,14 @@ const optionsName = {
 
 type OptionsName = {
   blogTitle: string;
+  headerBackgroundColor: string;
+  headerLogoColor: string;
   menu1: string;
   menuLink1: string;
+  menuColor1: string;
   menu2: string;
   menuLink2: string;
+  menuColor2: string;
   footerBlogName: string;
   imageText: string;
   imageUrl: string;
@@ -86,16 +94,23 @@ export default function Layout({
       <Head>
         <title>{option.blogTitle}</title>
       </Head>
-      <header className={layoutStyles.header}>
+      <header
+        className={layoutStyles.header}
+        style={{
+          backgroundColor: option.headerBackgroundColor,
+        }}
+      >
         <div className={layoutStyles.header_logo}>
-          <Link href="/">{option.blogTitle}</Link>
+          <Link href="/">
+            <a style={{ color: option.headerLogoColor }}>{option.blogTitle}</a>
+          </Link>
         </div>
         <div className={layoutStyles.header_menu}>
           <Link href={option.menuLink1}>
-            <a>{option.menu1}</a>
+            <a style={{ color: option.menuColor1 }}>{option.menu1}</a>
           </Link>
           <Link href={option.menuLink2}>
-            <a>{option.menu2}</a>
+            <a style={{ color: option.menuColor2 }}>{option.menu2}</a>
           </Link>
         </div>
       </header>
@@ -145,7 +160,7 @@ export default function Layout({
               handleChange(e, `/category/${categoryRef.current.value}_1`)
             }
           />
-          <div className={layoutStyles.ads}>
+          {/* <div className={layoutStyles.ads}> 
             <AdSense.Google
               client="ca-pub-3401994941764286"
               slot="7553735009"
@@ -153,7 +168,7 @@ export default function Layout({
               format="auto"
               responsive="true"
             />
-          </div>
+          </div>*/}
         </div>
       </div>
       {current && max ? (
