@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   allPostsData.forEach((post:Post) => {
     rss.item({
       title: post.title,
-      url: `https://nagatapote.work/${post.id}`,
+      url: `https://nagatapote.work/posts/${post.id}`,
       description: post.category,
       date: new Date(post.date),
     });
