@@ -23,7 +23,7 @@ const optionsName = {
   imageUrl: "/image/image.png",
   profileImage: "/image/profile.jpg",
   profileText:
-    "<center>ITエンジニア・ミニマリスト</center><br />食品業界からIT業界へ転職。<br />本業ではITエンジニアとしてシステム運用をしています。<br />プライベートではモダンな技術でフロントエンドの開発をしています。",
+    "<center>WEBエンジニア・ミニマリスト</center><br />ベンチャー企業でWEBエンジニアしてます。<br />フロントもバックも触ってます。<br />最近、GO楽しい。",
 };
 
 type OptionsName = {
@@ -125,7 +125,7 @@ export default function Layout({
             className={layoutStyles.profileImage}
             src={option.profileImage}
           />
-          <div className={layoutStyles.profileName}>Hiroaki Nagata</div>
+          <div className={layoutStyles.profileName}>pote</div>
           <span dangerouslySetInnerHTML={{ __html: option.profileText }} />
           <div className={layoutStyles.rightArea_archive}>Archive</div>
           <select className={layoutStyles.archiveSelect} ref={dateRef}>
