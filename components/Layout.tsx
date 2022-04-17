@@ -23,7 +23,7 @@ const optionsName = {
   imageUrl: "/image/image.png",
   profileImage: "/image/profile.jpg",
   profileText:
-    "<center>WEBエンジニア・ミニマリスト</center><br />ベンチャー企業でWEBエンジニアしてます。<br />フロントもバックも触ってます。<br />最近、GO楽しい。",
+    "<center>フロントエンドエンジニア・ミニマリスト</center><br />名古屋のベンチャー企業でフロントエンドエンジニアしてます。",
 };
 
 type OptionsName = {
