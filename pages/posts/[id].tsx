@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 import { getAllPostIds, getPostData } from "../../lib/posts";
-import Date from "../../components/date";
+import dayjs from "dayjs";
 import utilStyles from "../../styles/util.module.css";
 import Layout from "../../components/Layout";
 import { getSortedPostsData } from "../../lib/posts";
@@ -37,7 +37,7 @@ export default function Post({ postData, allPostsDatas }) {
               </div>
               <small className={utilStyles.blogDate}>
                 <img className={utilStyles.blogClockImage} src="/clock.png" />
-                <Date dateString={postData.date} />
+                {dayjs(postData.date).format("YYYY年MM月DD日")}
               </small>
             </div>
             <div className="markdown">

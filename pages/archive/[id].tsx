@@ -1,10 +1,10 @@
 import * as React from "react";
 import Link from "next/link";
 import { GetStaticPaths } from "next";
-import Date from "../../components/date";
 import utilStyles from "../../styles/util.module.css";
 import { getSortedPostsData } from "../../lib/posts";
 import Layout from "../../components/Layout";
+import dayjs from "dayjs";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPostsData = getSortedPostsData();
@@ -68,7 +68,7 @@ export default function Archive({
       >
         <div className={utilStyles.article}>
           <h2>Article</h2>
-          <h4>{idDate.replace("-", "年") + "月"}</h4>
+          <h4>{dayjs(idDate).format("YYYY年MM月")}</h4>
           {dateData.map(({ id, date, title, image, profile, user }, index) => (
             <span key={index}>
               {date.slice(0, -3) == idDate && (
@@ -89,7 +89,7 @@ export default function Archive({
                           className={utilStyles.blogClockImage}
                           src="/clock.png"
                         />
-                        <Date dateString={date} />
+                        {dayjs(date).format("YYYY年MM月DD日")}
                       </small>
                     </div>
                   </div>

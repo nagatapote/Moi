@@ -5,6 +5,7 @@ import Router from "next/router";
 import layoutStyles from "../styles/layout.module.css";
 import ImageArea from "./ImageArea";
 import Pager from "../components/pager";
+import dayjs from "dayjs";
 import AdSense from "react-adsense";
 
 const optionsName = {
@@ -43,12 +44,17 @@ type OptionsName = {
   profileText: string;
 };
 
+type AllPostsData = {
+  category: string;
+  date: string;
+};
+
 type Props = {
   children: ReactNode;
   option?: OptionsName;
   max?: number;
   current?: number;
-  allPostsData?: { category: string; date: string }[];
+  allPostsData?: AllPostsData[];
   idCategory?: string;
   idDate?: string;
 };
@@ -64,18 +70,18 @@ export default function Layout({
 }: Props) {
   const dateRef = useRef(null);
   const categoryRef = useRef(null);
-  const filterUniqueCategory = (allPostsData: { category: string }[]) => {
-    const categories = allPostsData.map((category) => {
-      return category.category;
+  const filterUniqueCategory = (allPostsData: AllPostsData[]) => {
+    const categories = allPostsData.map((allPostData) => {
+      return allPostData.category;
     });
     return categories.filter(function (category, index) {
       return categories.indexOf(category) === index;
     });
   };
 
-  const filterUniqueDate = (allPostsData: { date: string }[]) => {
-    const dates = allPostsData.map((date) => {
-      return date.date.slice(0, -3).replace("-", "年");
+  const filterUniqueDate = (allPostsData: AllPostsData[]) => {
+    const dates = allPostsData.map((allPostData) => {
+      return dayjs(allPostData.date).format("YYYY年MM");
     });
     return dates.filter(function (date, index) {
       return dates.indexOf(date) === index;
