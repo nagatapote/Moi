@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { GetStaticPaths } from "next";
-import Date from "../../components/date";
+import dayjs from "dayjs";
 import utilStyles from "../../styles/util.module.css";
 import { getSortedPostsData } from "../../lib/posts";
 import Layout from "../../components/Layout";
@@ -63,7 +63,7 @@ export default function Article({ allPostsData, allPostsDatas, current, max }) {
                           className={utilStyles.blogClockImage}
                           src="/clock.png"
                         />
-                        <Date dateString={date} />
+                        {dayjs(date).format("YYYY年MM月DD日")}
                       </small>
                     </div>
                   </div>

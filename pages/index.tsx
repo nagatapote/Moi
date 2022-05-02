@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Date from "../components/date";
+import dayjs from "dayjs";
 import utilStyles from "../styles/util.module.css";
 import Layout from "../components/Layout";
 import { getSortedPostsData } from "../lib/posts";
@@ -43,7 +43,7 @@ export default function Home({ allPostsData, allPostsDatas, current, max }) {
                           className={utilStyles.blogClockImage}
                           src="/clock.png"
                         />
-                        <Date dateString={date} />
+                        {dayjs(date).format("YYYY年MM月DD日")}
                       </small>
                     </div>
                   </div>
