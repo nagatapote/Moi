@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import dayjs from "dayjs";

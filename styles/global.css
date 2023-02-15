@@ -30,6 +30,10 @@ img {
 }
 
 /* markdown */
+.markdown {
+  word-wrap: break-word;
+}
+
 .markdown code,
 .markdown pre {
   max-height: 500px;
