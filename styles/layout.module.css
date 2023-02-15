@@ -38,6 +38,14 @@
   padding: 20px 20px 20px 20px;
 }
 
+.pagerAreaPC {
+  display: block;
+}
+
+.pagerAreaSP {
+  display: none;
+}
+
 .rightArea_profile {
   margin-top: 10px;
   border-bottom: 1px solid #c0c0c0;
@@ -141,7 +149,16 @@
     background-color: white;
     width: 97%;
     margin: 20px auto;
-    padding: 20px 20px 20px 20px;
+    padding: 20px;
+  }
+
+  .pagerAreaSP {
+    display: block;
+    background-color: white;
+  }
+
+  .pagerAreaPC {
+    display: none;
   }
 
   .archiveSelect {
