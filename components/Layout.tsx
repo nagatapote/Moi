@@ -112,12 +112,22 @@ export default function Layout({
           </Link>
         </div>
         <div className={layoutStyles.header_menu}>
-          <Link href={option.menuLink1}>
-            <a style={{ color: option.menuColor1 }}>{option.menu1}</a>
-          </Link>
-          <Link href={option.menuLink2}>
-            <a style={{ color: option.menuColor2 }}>{option.menu2}</a>
-          </Link>
+          <a
+            style={{ color: option.menuColor1 }}
+            href={option.menuLink1}
+            target="_blank"
+            rel="noopener"
+          >
+            {option.menu1}
+          </a>
+          <a
+            style={{ color: option.menuColor2 }}
+            href={option.menuLink2}
+            target="_blank"
+            rel="noopener"
+          >
+            {option.menu2}
+          </a>
         </div>
       </header>
       <div className={layoutStyles.ImageArea}>
@@ -126,20 +136,20 @@ export default function Layout({
       <div className={layoutStyles.mainAll}>
         <main className={layoutStyles.main}>{children}</main>
         <div className={layoutStyles.pagerAreaSP}>
-        {current && max ? (
-        <Pager
-          idCategory={idCategory}
-          idDate={idDate}
-          current={current}
-          max={max}
-        />
-      ) : (
-        <div className={layoutStyles.home}>
-          <Link href="/">
-            <a>HOME</a>
-          </Link>
-        </div>
-      )}
+          {current && max ? (
+            <Pager
+              idCategory={idCategory}
+              idDate={idDate}
+              current={current}
+              max={max}
+            />
+          ) : (
+            <div className={layoutStyles.home}>
+              <Link href="/">
+                <a>HOME</a>
+              </Link>
+            </div>
+          )}
         </div>
         <div className={layoutStyles.rightArea}>
           <div className={layoutStyles.rightArea_profile}>Profile</div>
@@ -147,7 +157,7 @@ export default function Layout({
             className={layoutStyles.profileImage}
             src={option.profileImage}
           />
-          <div className={layoutStyles.profileName}>pote</div>
+          <div className={layoutStyles.profileName}>Nagata Hiroaki</div>
           <span dangerouslySetInnerHTML={{ __html: option.profileText }} />
           <div className={layoutStyles.rightArea_archive}>Archive</div>
           <select className={layoutStyles.archiveSelect} ref={dateRef}>
@@ -195,20 +205,20 @@ export default function Layout({
       </div>
       <div className={layoutStyles.pagerAreaPC}>
         {current && max ? (
-        <Pager
-          idCategory={idCategory}
-          idDate={idDate}
-          current={current}
-          max={max}
-        />
-      ) : (
-        <div className={layoutStyles.home}>
-          <Link href="/">
-            <a>HOME</a>
-          </Link>
-        </div>
-      )}
-        </div>
+          <Pager
+            idCategory={idCategory}
+            idDate={idDate}
+            current={current}
+            max={max}
+          />
+        ) : (
+          <div className={layoutStyles.home}>
+            <Link href="/">
+              <a>HOME</a>
+            </Link>
+          </div>
+        )}
+      </div>
       <footer className={layoutStyles.footer}>
         <small>{option.footerBlogName}</small>
       </footer>
