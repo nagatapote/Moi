@@ -3,13 +3,13 @@ import Link from "next/link";
 import { GetStaticPaths } from "next";
 import dayjs from "dayjs";
 import utilStyles from "../../styles/util.module.css";
-import { getSortedPostsData } from "../../lib/posts";
+import { getSortedPosts } from "../../lib/posts";
 import Layout from "../../components/Layout";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPostsData = getSortedPostsData();
+  const allPosts = getSortedPosts();
   const paths = [];
-  allPostsData.forEach((post, index) => {
+  allPosts.forEach((post, index) => {
     if ((index + 1) % 6 === 0) {
       paths.push({
         params: {
@@ -23,27 +23,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = ({ params }) => {
   {
-    const allPostsData = getSortedPostsData();
+    const allPosts = getSortedPosts();
     const { id } = params;
     const current = parseInt(id, 10) - 1;
     return {
       props: {
         current: current + 1,
-        max: Math.ceil(allPostsData.length / 6),
-        allPostsDatas: allPostsData,
-        allPostsData: allPostsData.slice(current * 6, current * 6 + 6),
+        max: Math.ceil(allPosts.length / 6),
+        allPosts: allPosts,
+        targetPosts: allPosts.slice(current * 6, current * 6 + 6),
       },
     };
   }
 };
 
-export default function Article({ allPostsData, allPostsDatas, current, max }) {
+export default function Article({ targetPosts, allPosts, current, max }) {
   return (
     <>
-      <Layout current={current} max={max} allPostsData={allPostsDatas}>
+      <Layout current={current} max={max} allPosts={allPosts}>
         <div className={utilStyles.article}>
           <h2>Article</h2>
-          {allPostsData.map(
+          {targetPosts.map(
             ({ id, date, title, image, profile, user }, index) => (
               <span key={index}>
                 <Link href={`/posts/${id}`}>

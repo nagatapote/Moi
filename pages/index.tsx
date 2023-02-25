@@ -2,28 +2,28 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import utilStyles from "../styles/util.module.css";
 import Layout from "../components/Layout";
-import { getSortedPostsData } from "../lib/posts";
+import { getSortedPosts } from "../lib/posts";
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const allPosts = getSortedPosts();
   return {
     props: {
       current: 1,
-      max: Math.ceil(allPostsData.length / 6),
-      allPostsDatas: allPostsData,
-      allPostsData: allPostsData.slice(0, 6),
+      max: Math.ceil(allPosts.length / 6),
+      allPosts: allPosts,
+      targetPosts: allPosts.slice(0, 6),
     },
   };
 }
 
-export default function Home({ allPostsData, allPostsDatas, current, max }) {
+export default function Home({ targetPosts, allPosts, current, max }) {
   return (
     <>
-      <Layout current={current} max={max} allPostsData={allPostsDatas}>
+      <Layout current={current} max={max} allPosts={allPosts}>
         <div className={utilStyles.article}>
           <h2>Article</h2>
           <h4>最新記事</h4>
-          {allPostsData.map(
+          {targetPosts.map(
             ({ id, date, title, image, profile, user }, index) => (
               <span key={index}>
                 <Link href={`/posts/${id}`}>

@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from "react";
+import { ReactNode, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Router from "next/router";
@@ -44,7 +44,7 @@ type OptionsName = {
   profileText: string;
 };
 
-type AllPostsData = {
+type AllPosts = {
   category: string;
   date: string;
 };
@@ -54,7 +54,7 @@ type Props = {
   option?: OptionsName;
   max?: number;
   current?: number;
-  allPostsData?: AllPostsData[];
+  allPosts?: AllPosts[];
   idCategory?: string;
   idDate?: string;
 };
@@ -64,34 +64,34 @@ export default function Layout({
   option = optionsName,
   current,
   max,
-  allPostsData,
+  allPosts,
   idCategory,
   idDate,
 }: Props) {
   const dateRef = useRef(null);
   const categoryRef = useRef(null);
-  const filterUniqueCategory = (allPostsData: AllPostsData[]) => {
-    const categories = allPostsData.map((allPostData) => {
-      return allPostData.category;
+  const filterUniqueCategory = (allPosts: AllPosts[]) => {
+    const categories = allPosts.map((allPost) => {
+      return allPost.category;
     });
-    return categories.filter(function (category, index) {
+    return categories.filter((category, index) => {
       return categories.indexOf(category) === index;
     });
   };
 
-  const filterUniqueDate = (allPostsData: AllPostsData[]) => {
-    const dates = allPostsData.map((allPostData) => {
-      return dayjs(allPostData.date).format("YYYY年MM");
+  const filterUniqueDate = (allPosts: AllPosts[]) => {
+    const dates = allPosts.map((allPost) => {
+      return dayjs(allPost.date).format("YYYY年MM");
     });
     return dates.filter(function (date, index) {
       return dates.indexOf(date) === index;
     });
   };
 
-  const uniqCategories = filterUniqueCategory(allPostsData);
-  const uniqDates = filterUniqueDate(allPostsData);
+  const uniqCategories = filterUniqueCategory(allPosts);
+  const uniqDates = filterUniqueDate(allPosts);
 
-  const handleChange = (e, path) => {
+  const handleChange = (path: string) => {
     Router.push(path);
   };
 
@@ -170,9 +170,8 @@ export default function Layout({
           <input
             type="button"
             value="検索"
-            onClick={(e) =>
+            onClick={() =>
               handleChange(
-                e,
                 `/archive/${dateRef.current.value.replace("年", "-")}_1`
               )
             }
@@ -188,8 +187,8 @@ export default function Layout({
           <input
             type="button"
             value="検索"
-            onClick={(e) =>
-              handleChange(e, `/category/${categoryRef.current.value}_1`)
+            onClick={() =>
+              handleChange(`/category/${categoryRef.current.value}_1`)
             }
           />
           {/* <div className={layoutStyles.ads}> 
