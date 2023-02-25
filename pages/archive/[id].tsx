@@ -2,18 +2,18 @@ import * as React from "react";
 import Link from "next/link";
 import { GetStaticPaths } from "next";
 import utilStyles from "../../styles/util.module.css";
-import { getSortedPostsData } from "../../lib/posts";
+import { getSortedPosts } from "../../lib/posts";
 import Layout from "../../components/Layout";
 import dayjs from "dayjs";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPostsData = getSortedPostsData();
+  const allPosts = getSortedPosts();
   const paths = [];
-  const index = allPostsData.map((x, index) => {
+  const index = allPosts.map((x, index) => {
     return index + 1;
   });
-  allPostsData.map((post: { id: string; date: string }) => {
-    index.map((x, index) => {
+  allPosts.map((post: { id: string; date: string }) => {
+    index.map((x) => {
       paths.push({
         params: {
           id: post.date.slice(0, -3) + "_" + x,
@@ -26,7 +26,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = ({ params }) => {
   {
-    const allPostsData = getSortedPostsData();
+    const allPosts = getSortedPosts();
     const { id } = params;
     const current = id.substring(id.indexOf("_") + 1) - 1;
     return {
@@ -34,27 +34,27 @@ export const getStaticProps = ({ params }) => {
         current: current + 1,
         idDate: id.substring(0, id.indexOf("_")),
         max: Math.ceil(
-          allPostsData.filter(
+          allPosts.filter(
             (list: { id: string; date: string }) =>
               list.date.slice(0, -3) == id.substring(0, id.indexOf("_"))
           ).length / 6
         ),
-        dateData: allPostsData
+        datePosts: allPosts
           .filter(
             (list: { id: string; date: string }) =>
               list.date.slice(0, -3) == id.substring(0, id.indexOf("_"))
           )
           .slice(current * 6, current * 6 + 6),
-        allPostsDatas: allPostsData,
+        allPosts: allPosts,
       },
     };
   }
 };
 
 export default function Archive({
-  allPostsDatas,
+  allPosts,
   idDate,
-  dateData,
+  datePosts,
   current,
   max,
 }) {
@@ -63,13 +63,13 @@ export default function Archive({
       <Layout
         current={current}
         max={max}
-        allPostsData={allPostsDatas}
+        allPosts={allPosts}
         idDate={idDate}
       >
         <div className={utilStyles.article}>
           <h2>Article</h2>
           <h4>{dayjs(idDate).format("YYYY年MM月")}</h4>
-          {dateData.map(({ id, date, title, image, profile, user }, index) => (
+          {datePosts.map(({ id, date, title, image, profile, user }, index: number) => (
             <span key={index}>
               {date.slice(0, -3) == idDate && (
                 <Link href={`/posts/${id}`}>

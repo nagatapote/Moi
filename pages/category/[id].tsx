@@ -3,17 +3,17 @@ import Link from "next/link";
 import { GetStaticPaths } from "next";
 import dayjs from "dayjs";
 import utilStyles from "../../styles/util.module.css";
-import { getSortedPostsData } from "../../lib/posts";
+import { getSortedPosts } from "../../lib/posts";
 import Layout from "../../components/Layout";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPostsData = getSortedPostsData();
+  const allPosts = getSortedPosts();
   const paths = [];
-  const index = allPostsData.map((x, index) => {
+  const index = allPosts.map((x, index) => {
     return index + 1;
   });
-  allPostsData.map((post: { id: string; category: string }) => {
-    index.map((x, index) => {
+  allPosts.map((post: { id: string; category: string }) => {
+    index.map((x) => {
       paths.push({
         params: {
           id: post.category + "_" + x,
@@ -26,34 +26,34 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = ({ params }) => {
   {
-    const allPostsData = getSortedPostsData();
+    const allPosts = getSortedPosts();
     const { id } = params;
     const current = id.substring(id.indexOf("_") + 1) - 1;
     return {
       props: {
         current: current + 1,
         max: Math.ceil(
-          allPostsData.filter(
+          allPosts.filter(
             (list: { id: string; category: string }) =>
               list.category == id.substring(0, id.indexOf("_"))
           ).length / 6
         ),
         idCategory: id.substring(0, id.indexOf("_")),
-        categoryData: allPostsData
+        categoryPosts: allPosts
           .filter(
             (list: { id: string; category: string }) =>
               list.category == id.substring(0, id.indexOf("_"))
           )
           .slice(current * 6, current * 6 + 6),
-        allPostsDatas: allPostsData,
+        allPosts: allPosts,
       },
     };
   }
 };
 
 export default function Category({
-  allPostsDatas,
-  categoryData,
+  allPosts,
+  categoryPosts,
   idCategory,
   current,
   max,
@@ -63,14 +63,14 @@ export default function Category({
       <Layout
         current={current}
         max={max}
-        allPostsData={allPostsDatas}
+        allPosts={allPosts}
         idCategory={idCategory}
       >
         <div className={utilStyles.article}>
           <h2>Article</h2>
           <h4>{idCategory}</h4>
-          {categoryData.map(
-            ({ id, date, title, image, profile, user, category }, index) => (
+          {categoryPosts.map(
+            ({ id, date, title, image, profile, user, category }, index: number) => (
               <span key={index}>
                 {category == idCategory && (
                   <Link href={`/posts/${id}`}>

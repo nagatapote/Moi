@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import Rss from 'rss';
-import { getAllPostsData } from '../lib/posts';
+import { getAllPosts } from '../lib/posts';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { res } = ctx;
@@ -8,7 +8,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/rss+xml;charset=utf-8');
 
-  const allPostsData = getAllPostsData();
+  const allPosts = getAllPosts();
 
   const rss = new Rss({
     title: 'Moi',
@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     category: string,
 }
 
-  allPostsData.forEach((post:Post) => {
+  allPosts.forEach((post:Post) => {
     rss.item({
       title: post.title,
       url: `https://nagatapote.work/posts/${post.id}`,
