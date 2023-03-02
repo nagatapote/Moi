@@ -1,10 +1,8 @@
-import * as React from "react";
-import Link from "next/link";
 import { GetStaticPaths } from "next";
-import dayjs from "dayjs";
 import utilStyles from "../../styles/util.module.css";
 import { getSortedPosts } from "../../lib/posts";
 import Layout from "../../components/Layout";
+import { ArticleCard } from "../../components/article";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = getSortedPosts();
@@ -69,36 +67,27 @@ export default function Category({
         <div className={utilStyles.article}>
           <h2>Article</h2>
           <h4>{idCategory}</h4>
-          {categoryPosts.map(
-            ({ id, date, title, image, profile, user, category }, index: number) => (
-              <span key={index}>
-                {category == idCategory && (
-                  <Link href={`/posts/${id}`}>
-                    <div className={utilStyles.blogListItem}>
-                      <img className={utilStyles.blogListImage} src={image} />
-                      <div className={utilStyles.blogTitle}>{title}</div>
-                      <div className={utilStyles.blogList}>
-                        <div className={utilStyles.blogUser}>
-                          <img
-                            className={utilStyles.blogProfileImage}
-                            src={profile}
-                          />
-                          <span>{user}</span>
-                        </div>
-                        <small className={utilStyles.blogDate}>
-                          <img
-                            className={utilStyles.blogClockImage}
-                            src="/clock.png"
-                          />
-                          {dayjs(date).format("YYYY年MM月DD日")}
-                        </small>
-                      </div>
-                    </div>
-                  </Link>
-                )}
-              </span>
-            )
-          )}
+          <div className={utilStyles.articleCardWrapper}>
+            {categoryPosts.map(
+              (
+                { id, date, title, image, profile, user, category },
+                index: number
+              ) => (
+                <div key={index}>
+                  {category == idCategory && (
+                    <ArticleCard
+                      id={id}
+                      date={date}
+                      title={title}
+                      image={image}
+                      profile={profile}
+                      user={user}
+                    />
+                  )}
+                </div>
+              )
+            )}
+          </div>
         </div>
       </Layout>
     </>

@@ -1,10 +1,9 @@
-import * as React from "react";
-import Link from "next/link";
 import { GetStaticPaths } from "next";
 import utilStyles from "../../styles/util.module.css";
 import { getSortedPosts } from "../../lib/posts";
 import Layout from "../../components/Layout";
 import dayjs from "dayjs";
+import { ArticleCard } from "../../components/article";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = getSortedPosts();
@@ -51,52 +50,31 @@ export const getStaticProps = ({ params }) => {
   }
 };
 
-export default function Archive({
-  allPosts,
-  idDate,
-  datePosts,
-  current,
-  max,
-}) {
+export default function Archive({ allPosts, idDate, datePosts, current, max }) {
   return (
     <>
-      <Layout
-        current={current}
-        max={max}
-        allPosts={allPosts}
-        idDate={idDate}
-      >
+      <Layout current={current} max={max} allPosts={allPosts} idDate={idDate}>
         <div className={utilStyles.article}>
           <h2>Article</h2>
           <h4>{dayjs(idDate).format("YYYY年MM月")}</h4>
-          {datePosts.map(({ id, date, title, image, profile, user }, index: number) => (
-            <span key={index}>
-              {date.slice(0, -3) == idDate && (
-                <Link href={`/posts/${id}`}>
-                  <div className={utilStyles.blogListItem}>
-                    <img className={utilStyles.blogListImage} src={image} />
-                    <div className={utilStyles.blogTitle}>{title}</div>
-                    <div className={utilStyles.blogList}>
-                      <div className={utilStyles.blogUser}>
-                        <img
-                          className={utilStyles.blogProfileImage}
-                          src={profile}
-                        />
-                        <span>{user}</span>
-                      </div>
-                      <small className={utilStyles.blogDate}>
-                        <img
-                          className={utilStyles.blogClockImage}
-                          src="/clock.png"
-                        />
-                        {dayjs(date).format("YYYY年MM月DD日")}
-                      </small>
-                    </div>
-                  </div>
-                </Link>
-              )}
-            </span>
-          ))}
+          <div className={utilStyles.articleCardWrapper}>
+            {datePosts.map(
+              ({ id, date, title, image, profile, user }, index: number) => (
+                <div key={index}>
+                  {date.slice(0, -3) == idDate && (
+                    <ArticleCard
+                      id={id}
+                      date={date}
+                      title={title}
+                      image={image}
+                      profile={profile}
+                      user={user}
+                    />
+                  )}
+                </div>
+              )
+            )}
+          </div>
         </div>
       </Layout>
     </>
