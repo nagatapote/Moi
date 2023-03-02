@@ -1,9 +1,16 @@
 /* [id].tsx css */
 
 .article {
-  max-width: 75%;
+  max-width: 95%;
   margin: 0 auto;
   text-align: center;
+}
+
+.articleCardWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  justify-content: center;
+  grid-gap: 1rem;
 }
 
 .blogListItem {
@@ -35,7 +42,6 @@
   text-align: left;
   color: black;
   font-size: 0.9rem;
-  overflow-wrap: break-word;
   padding: 10px;
   min-height: 70px;
 }
@@ -80,7 +86,6 @@
   .blogListItem {
     display: inline-block;
     vertical-align: top;
-    width: auto;
     height: auto;
     border-radius: 10px;
     overflow: hidden;
