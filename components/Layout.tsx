@@ -136,20 +136,19 @@ export default function Layout({
       <div className={layoutStyles.mainAll}>
         <main className={layoutStyles.main}>{children}</main>
         <div className={layoutStyles.pagerAreaSP}>
-          {current && max ? (
+          {current && max && (
             <Pager
               idCategory={idCategory}
               idDate={idDate}
               current={current}
               max={max}
             />
-          ) : (
-            <div className={layoutStyles.home}>
-              <Link href="/">
-                <a>HOME</a>
-              </Link>
-            </div>
           )}
+          <div className={layoutStyles.home}>
+            <Link href="/">
+              <a>HOME</a>
+            </Link>
+          </div>
         </div>
         <div className={layoutStyles.rightArea}>
           <div className={layoutStyles.rightArea_profile}>Profile</div>
@@ -203,20 +202,19 @@ export default function Layout({
         </div>
       </div>
       <div className={layoutStyles.pagerAreaPC}>
-        {current && max ? (
+        {current && max && (
           <Pager
             idCategory={idCategory}
             idDate={idDate}
             current={current}
             max={max}
           />
-        ) : (
-          <div className={layoutStyles.home}>
-            <Link href="/">
-              <a>HOME</a>
-            </Link>
-          </div>
         )}
+        <div className={layoutStyles.home}>
+          <Link href="/">
+            <a>HOME</a>
+          </Link>
+        </div>
       </div>
       <footer className={layoutStyles.footer}>
         <small>{option.footerBlogName}</small>
