@@ -1,4 +1,3 @@
-import React from "react";
 import usePageView from "../hooks/usePageView";
 import { AppProps } from "next/app";
 import "../styles/global.css";

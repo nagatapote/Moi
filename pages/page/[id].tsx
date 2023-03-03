@@ -4,6 +4,34 @@ import { getSortedPosts } from "../../lib/posts";
 import Layout from "../../components/Layout";
 import { ArticleCard } from "../../components/article";
 
+export default function Article({ targetPosts, allPosts, current, max }) {
+  return (
+    <>
+      <Layout current={current} max={max} allPosts={allPosts}>
+        <div className={utilStyles.article}>
+          <h2>Article</h2>
+          <div className={utilStyles.articleCardWrapper}>
+            {targetPosts.map(
+              ({ id, date, title, image, profile, user }, index) => (
+                <div key={index}>
+                  <ArticleCard
+                    id={id}
+                    date={date}
+                    title={title}
+                    image={image}
+                    profile={profile}
+                    user={user}
+                  />
+                </div>
+              )
+            )}
+          </div>
+        </div>
+      </Layout>
+    </>
+  );
+}
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = getSortedPosts();
   const paths = [];
@@ -34,31 +62,3 @@ export const getStaticProps = ({ params }) => {
     };
   }
 };
-
-export default function Article({ targetPosts, allPosts, current, max }) {
-  return (
-    <>
-      <Layout current={current} max={max} allPosts={allPosts}>
-        <div className={utilStyles.article}>
-          <h2>Article</h2>
-          <div className={utilStyles.articleCardWrapper}>
-            {targetPosts.map(
-              ({ id, date, title, image, profile, user }, index) => (
-                <div key={index}>
-                  <ArticleCard
-                    id={id}
-                    date={date}
-                    title={title}
-                    image={image}
-                    profile={profile}
-                    user={user}
-                  />
-                </div>
-              )
-            )}
-          </div>
-        </div>
-      </Layout>
-    </>
-  );
-}
