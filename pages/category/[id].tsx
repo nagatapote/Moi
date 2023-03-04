@@ -1,6 +1,6 @@
 import { GetStaticPaths } from "next";
 import utilStyles from "../../styles/util.module.css";
-import { getSortedPosts } from "../../lib/posts";
+import { getPosts } from "../../lib/posts";
 import Layout from "../../components/Layout";
 import { ArticleCard } from "../../components/article";
 
@@ -50,7 +50,7 @@ export default function Category({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = getSortedPosts();
+  const allPosts = getPosts();
   const paths = [];
   const index = allPosts.map((x, index) => {
     return index + 1;
@@ -69,7 +69,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = ({ params }) => {
   {
-    const allPosts = getSortedPosts();
+    const allPosts = getPosts();
     const { id } = params;
     const current = id.substring(id.indexOf("_") + 1) - 1;
     return {

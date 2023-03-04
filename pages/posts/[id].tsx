@@ -4,7 +4,7 @@ import { getAllPostIds, getPost } from "../../lib/posts";
 import dayjs from "dayjs";
 import utilStyles from "../../styles/util.module.css";
 import Layout from "../../components/Layout";
-import { getSortedPosts } from "../../lib/posts";
+import { getPosts } from "../../lib/posts";
 import hljs from "highlight.js/lib/core";
 import xml from "highlight.js/lib/languages/xml";
 import javascript from "highlight.js/lib/languages/javascript";
@@ -61,7 +61,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = await getPost(params.id);
-  const allPosts = getSortedPosts();
+  const allPosts = getPosts();
   return {
     props: {
       post,

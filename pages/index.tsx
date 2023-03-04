@@ -1,6 +1,6 @@
 import utilStyles from "../styles/util.module.css";
 import Layout from "../components/Layout";
-import { getSortedPosts } from "../lib/posts";
+import { getPosts } from "../lib/posts";
 import { ArticleCard } from "../components/article";
 
 export default function Home({ targetPosts, allPosts, current, max }) {
@@ -33,7 +33,7 @@ export default function Home({ targetPosts, allPosts, current, max }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = getSortedPosts();
+  const allPosts = getPosts();
   return {
     props: {
       current: 1,
