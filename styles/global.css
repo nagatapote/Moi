@@ -56,19 +56,18 @@ img {
   background: #f4f4f4;
 }
 .markdown h2 {
-  border-bottom: 2px solid #000;
+  border-bottom: 0.5px solid #000;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .markdown h3 {
   display: inline-block;
-  border-bottom: 6px double #000;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .markdown h4 {
   display: inline-block;
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid #000;
   margin-top: 10px;
   margin-bottom: 10px;
 }
