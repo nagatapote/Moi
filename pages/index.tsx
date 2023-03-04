@@ -1,9 +1,9 @@
 import utilStyles from "../styles/util.module.css";
 import Layout from "../components/Layout";
-import { getPosts } from "../lib/posts";
+import { getAllPosts } from "../lib/posts";
 import { ArticleCard } from "../components/article";
 
-export default function Home({ targetPosts, allPosts, current, max }) {
+export default function Home({ targetAllPosts, allPosts, current, max }) {
   return (
     <>
       <Layout current={current} max={max} allPosts={allPosts}>
@@ -11,7 +11,7 @@ export default function Home({ targetPosts, allPosts, current, max }) {
           <h2>Article</h2>
           <h4>最新記事</h4>
           <div className={utilStyles.articleCardWrapper}>
-            {targetPosts.map(
+            {targetAllPosts.map(
               ({ id, date, title, image, profile, user }, index) => (
                 <div key={index}>
                   <ArticleCard
@@ -33,13 +33,13 @@ export default function Home({ targetPosts, allPosts, current, max }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = getPosts();
+  const allPosts = getAllPosts();
   return {
     props: {
       current: 1,
       max: Math.ceil(allPosts.length / 6),
       allPosts: allPosts,
-      targetPosts: allPosts.slice(0, 6),
+      targetAllPosts: allPosts.slice(0, 6),
     },
   };
 }

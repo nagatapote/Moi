@@ -6,7 +6,7 @@ import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-export function getPosts() {
+export function getAllPosts() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPosts = fileNames.map((fileName) => {

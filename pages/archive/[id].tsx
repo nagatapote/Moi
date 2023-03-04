@@ -1,6 +1,6 @@
 import { GetStaticPaths } from "next";
 import utilStyles from "../../styles/util.module.css";
-import { getPosts } from "../../lib/posts";
+import { getAllPosts } from "../../lib/posts";
 import Layout from "../../components/Layout";
 import dayjs from "dayjs";
 import { ArticleCard } from "../../components/article";
@@ -37,7 +37,7 @@ export default function Archive({ allPosts, idDate, datePosts, current, max }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = getPosts();
+  const allPosts = getAllPosts();
   const paths = [];
   const index = allPosts.map((x, index) => {
     return index + 1;
@@ -56,7 +56,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = ({ params }) => {
   {
-    const allPosts = getPosts();
+    const allPosts = getAllPosts();
     const { id } = params;
     const current = id.substring(id.indexOf("_") + 1) - 1;
     return {
